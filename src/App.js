@@ -56,6 +56,13 @@ class App extends Component {
         return <a className='link size' href={url1}>| {url1}</a>
     }
   }
+  geturlfortitle(url1,url2){
+    if(url1 === null || url1 === ""){
+        return url2 ; 
+    }else if(url2 === null || url2 === ""){
+        return url1 ;
+    }
+  }
   getheading(h1,h2){
        if(h1 === null || h1 === ""){
           return <span>{h2}</span>
@@ -69,7 +76,7 @@ class App extends Component {
     }else{
     return(
     <p className='addborder' key={i} >
-        <a className='link' href={item.story_url}>{this.getheading(item.story_title,item.title)}</a><br/>
+        <a className='link' href={this.geturlfortitle(item.story_url,item.url)}>{this.getheading(item.story_title,item.title)}</a><br/>
         <span className='size'>{item.points} points | {item.author} | {item.created_at.substring(0,10)} | {item.num_comments} comments </span> {this.geturl(item.story_url,item.url,item.story_text)}
     </p>
     );
